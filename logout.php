@@ -1,16 +1,11 @@
 <?php
+// Menghancurkan sesi dan menghapus semua data sesi
+session_name("owner_session"); // Pastikan nama sesi sesuai dengan yang digunakan
 session_start();
+session_unset(); // Menghapus semua data sesi
+session_destroy(); // Menghancurkan sesi
 
-// Hapus semua data sesi
-session_unset();
-session_destroy();
-
-// Hapus cookie 'username' jika ada
-if (isset($_COOKIE['username'])) {
-    setcookie("username", "", time() - 3600, "/"); // Set waktu kadaluarsa di masa lalu untuk menghapus cookie
-}
-
-// Redirect ke halaman login
+// Redirect ke halaman login setelah logout
 header("Location: login.php");
 exit();
 ?>

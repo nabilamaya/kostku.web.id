@@ -1,15 +1,12 @@
 <?php
-session_name("admin_session");
+session_name("owner_session");
 session_start();
 
-// Cek jika admin belum login
-if (!isset($_SESSION['admin_username'])) {
-    header("Location: login.php");
-    exit();
+// Cek jika owner sudah login
+if (!isset($_SESSION['owner_username'])) {
+    header("Location: login.php"); // Alihkan ke halaman login jika belum login
+    exit(); // Pastikan tidak ada kode yang dieksekusi setelah header
 }
-
-// Data admin bisa diambil dari session jika diperlukan
-$admin_username = $_SESSION['admin_username'];
 ?>
 
 <!DOCTYPE html>
@@ -22,33 +19,20 @@ $admin_username = $_SESSION['admin_username'];
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-<body>
-<div class="d-flex">
+    <div class="d-flex">
         <!-- Sidebar -->
         <nav class="bg-dark text-white p-3" style="width: 250px; height: 100vh;">
-            <h4>Dashboard Admin</h4>
-            <p class="mb-4">Admin</p>
+            <h4>Dashboard Owner</h4>
+            <p class="mb-4">Owner</p>
             <ul class="nav flex-column mt-4">
                 <li class="nav-item">
                     <a href="dashboard.php" class="nav-link text-white"> <i class="fas fa-tachometer-alt"></i> Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a href="verifikasi_pengguna1.php" class="nav-link text-white"> <i class="fas fa-user-circle"></i> Pengguna Belum Diverifikasi</a>
+                    <a href="input.php" class="nav-link text-white"> <i class="fas fa-home"></i> Data Kost</a>
                 </li>
-                <li class="nav-item">
-                    <a href="verifikasi_pengguna2.php" class="nav-link text-white"> <i class="fas fa-user-circle"></i> Pengguna Terverifikasi</a>
-                </li>
-                <li class="nav-item">
-                    <a href="verifikasi_owner1.php" class="nav-link text-white"> <i class="fas fa-user-circle"></i> Owner Belum Diverifikasi</a>
-                </li>
-                <li class="nav-item">
-                    <a href="verifikasi_owner2.php" class="nav-link text-white"> <i class="fas fa-user-circle"></i> Owner Terverifikasi</a>
-                </li>
-                <li class="nav-item">
-                    <a href="dashboard_pembayaran.php" class="nav-link text-white"> <i class="fas fa-money-bill"></i> Verifikasi Pembayaran</a>
-                </li>
-                <li class="nav-item">
-                    <a href="verifikasi1_pembayaran.php" class="nav-link text-white"> <i class="fas fa-receipt"></i> Riwayat Pembayaran</a>
+                <li class="nav-item mt-4">
+                    <a href="#" class="nav-link text-white"> <i class="fas fa-cogs"></i> Utils</a>
                 </li>
                 <li class="nav-item">
                     <a href="logout.php" class="nav-link text-white"> <i class="fas fa-sign-out-alt"></i> Logout</a>
